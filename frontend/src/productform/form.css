@@ -1,0 +1,39 @@
+.form-bg {
+    min-height: 100vh;
+    background: linear-gradient(to right, #ffecd2, #fcb69f);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 15px;
+  }
+  
+  .form-card {
+    border: none;
+    border-radius: 20px;
+    padding: 30px;
+    background-color: white;
+  }
+  
+
+  
+  .submit-btn {
+    background: #ff7e5f;
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .submit-btn:hover {
+    background: #e8553c;
+  }
+  @media (max-width: 768px) {
+  .btn13 {
+    margin-top: 5px;
+  }
+
+  .btn12 {
+      margin-right:0 !important;
+
+  }
+}
+

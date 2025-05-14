@@ -1,16 +1,26 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Login from "./login"; // Import your Login component
-import Register from "./register"; // Import your Register component (Sign Up page)
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./login";
+import Register from "./register";
+import ProductManagement from "./productform/form";
+import Layout from "./layout";
+import PrivateRoute from "./privateRoute";
 
 function App() {
   return (
     <Router>
       <Routes>
-        {/* Route for Login */}
-        <Route path="/" element={<Login />} />
-        {/* Route for Register */}
-        <Route path="/register" element={<Register />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Login />} />
+          <Route path="register" element={<Register />} />
+ <Route
+            path="product"
+            element={
+              <PrivateRoute>
+                <ProductManagement />
+              </PrivateRoute>
+            }
+          />        </Route>
       </Routes>
     </Router>
   );

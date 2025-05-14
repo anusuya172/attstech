@@ -3,6 +3,8 @@ const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
 require('dotenv').config();  // This loads the variables from the .env file
+const fs = require('fs');
+const path = require('path');
 
 const bodyParser = require("body-parser");
 app.use(cors());
@@ -13,10 +15,26 @@ app.use(bodyParser.urlencoded({extended: true,limit: "10mb",parameterLimit: 5000
 const config = require("./Config/dbDependency");
 const serverConfig = require("./Config/serverConfig");
 const port = process.env.PORT || serverConfig.ServerPort;
+const uploadPath = path.join(__dirname, 'uploads');
+app.use("/uploads", express.static("uploads"));
 
+// app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// Import routes
 const userRouter = require("./Page/Router/router");
+const productRoutes = require("./Page/Router/product");
+
+// Use routes
 app.use("/api/auth", userRouter);
+app.use("/api", productRoutes);
+
+
+if (!fs.existsSync(uploadPath)) {
+  fs.mkdirSync(uploadPath);
+}
+
+
+
 mongoose
 .connect(config.dbURL, {useUnifiedTopology: true,useNewUrlParser: true,})
 .then(() => {console.log("Connected to MongoDB");})

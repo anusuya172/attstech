@@ -5,6 +5,17 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
 });
 
+const productSchema = new mongoose.Schema({
+  name: String,
+  price: Number,
+  stock: Number,
+  description: String,
+  category: String,
+  manufacturingDate: Date,
+  image: String, 
+});
+
+const Product = mongoose.model("Product", productSchema);
 const User = mongoose.model("User", userSchema);
 
-module.exports = User; // This exports the User model
+module.exports = { User, Product }; 
