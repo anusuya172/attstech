@@ -64,7 +64,8 @@ MongoDB Integration
 Mongoose for schema and database interaction
  
 --How to Run the Project--
-
+clone
+https://github.com/anusuya172/attstech.git
 cd frontend
 npm install
 npm run dev
